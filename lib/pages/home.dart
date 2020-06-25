@@ -5,6 +5,8 @@ import 'package:streetracegather/helpers/competition.dart';
 import 'package:streetracegather/helpers/competitorInfo.dart';
 import 'dart:async';
 
+import 'package:streetracegather/services/auth.dart';
+
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
@@ -13,6 +15,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   String _timerDisplay = "00:00:00";
   Color backgroundColor = Colors.grey;
+  final AuthService _auth = AuthService();
 
   //TODO: test code
   DateTime startingTime = DateTime.parse("2020-06-23 21:47:00Z");  // 8:18pm
@@ -31,6 +34,27 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+            "Competition Go",
+        ),
+        backgroundColor: Colors.black,
+        actions: [
+          FlatButton.icon(
+              onPressed: () async {
+                await _auth.signOut();
+              },
+              icon: Icon(
+                Icons.person,
+                color: Colors.grey,
+              ),
+              label: Text(
+                "logout",
+                style: TextStyle(color: Colors.grey),
+              )
+          )
+        ],
+      ),
       backgroundColor: backgroundColor,
       body: buildTimerDisplay(),
       floatingActionButton: buildSpeedDial(),
@@ -71,11 +95,13 @@ class _HomeState extends State<Home> {
   }
 
   void updateTimer() {
-    setState(() {
-      _timerDisplay = competition.showCountDownTime();
-      if (competition.getSecondsLeft() < 0)
-        backgroundColor = Colors.green;
-    });
+    if (this.mounted) {
+      setState(() {
+        _timerDisplay = competition.showCountDownTime();
+        if (competition.getSecondsLeft() < 0)
+          backgroundColor = Colors.green;
+      });
+    }
   }
 }
 
