@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "622548903365",
+    "firebase_url": "https://competition-go.firebaseio.com",
+    "project_id": "competition-go",
+    "storage_bucket": "competition-go.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622548903365:android:2b8b999ebe816b7a1797ac",
+        "android_client_info": {
+          "package_name": "com.nr5p.streetracegather"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "622548903365-a25pksk7pch7e9vafpvntl89i0tkvguf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXYXVru80VKFUZ32z0n_8NZiCqa1_U0f8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "622548903365-a25pksk7pch7e9vafpvntl89i0tkvguf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
