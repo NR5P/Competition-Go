@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:streetracegather/services/auth.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
   final Function toggleView;
 
-  SignIn(this.toggleView);
+  Register(this.toggleView);
 
   @override
-  _SignInState createState() => _SignInState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
-  final AuthService _auth = new AuthService();
+class _RegisterState extends State<Register> {
+  final AuthService _auth = AuthService();
   String email = "";
   String password = "";
 
@@ -22,7 +22,7 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text(
-            "Sign In",
+            "Register",
             style: TextStyle(color: Colors.grey),
         ),
         actions: [
@@ -32,7 +32,7 @@ class _SignInState extends State<SignIn> {
               },
               icon: Icon(Icons.person),
               label: Text(
-                  "Sign In",
+                  "Register",
                   style: TextStyle(color: Colors.grey),
               )
           )
@@ -41,35 +41,35 @@ class _SignInState extends State<SignIn> {
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20,horizontal: 50),
         child: Form(
-          child: Column(
-            children: [
-              SizedBox(height: 20,),
-              TextFormField(
-                onChanged: (val) {
-                  setState(() => email = val);
-                },
-              ),
-              SizedBox(height: 20,),
-              TextFormField(
-                obscureText: true,
-                onChanged: (val) {
-                  setState(() => password = val);
-                },
-              ),
-              SizedBox(height: 20,),
-              RaisedButton(
-                color: Colors.black87,
-                child: Text(
-                  "Sign In",
-                  style: TextStyle(color: Colors.grey),
+            child: Column(
+              children: [
+                SizedBox(height: 20,),
+                TextFormField(
+                  onChanged: (val) {
+                    setState(() => email = val);
+                  },
                 ),
-                onPressed: () async {
-                  print(email);
-                  print(password);
-                },
-              )
-            ],
-          )
+                SizedBox(height: 20,),
+                TextFormField(
+                  obscureText: true,
+                  onChanged: (val) {
+                    setState(() => password = val);
+                  },
+                ),
+                SizedBox(height: 20,),
+                RaisedButton(
+                  color: Colors.black87,
+                  child: Text(
+                    "Register",
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  onPressed: () async {
+                    print(email);
+                    print(password);
+                  },
+                )
+              ],
+            )
         ),
         /*
         child: RaisedButton(
@@ -89,4 +89,3 @@ class _SignInState extends State<SignIn> {
     );
   }
 }
-
