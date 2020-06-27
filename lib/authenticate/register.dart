@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:streetracegather/services/auth.dart';
+import 'package:streetracegather/shared/constants.dart';
 
 class Register extends StatefulWidget {
   final Function toggleView;
@@ -48,6 +49,7 @@ class _RegisterState extends State<Register> {
               children: [
                 SizedBox(height: 20,),
                 TextFormField(
+                  decoration: textInputDecoration.copyWith(hintText: "Email"),
                   validator: (val) => val.trim().isEmpty ? "Enter an email" : null,
                   onChanged: (val) {
                     setState(() => email = val.trim());
@@ -55,6 +57,7 @@ class _RegisterState extends State<Register> {
                 ),
                 SizedBox(height: 20,),
                 TextFormField(
+                  decoration: textInputDecoration.copyWith(hintText: "Password"),
                   obscureText: true,
                   validator: (val) => val.trim().length < 6 ? "Password must be at least 6 characters long" : null,
                   onChanged: (val) {
