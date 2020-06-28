@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:streetracegather/services/auth.dart';
 import 'package:streetracegather/shared/constants.dart';
+import 'package:streetracegather/shared/loading.dart';
 
 class Register extends StatefulWidget {
   final Function toggleView;
@@ -14,13 +15,14 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+  bool loading = false;
   String email = "";
   String password = "";
   String error = "";
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading ? Loading() : Scaffold(
       backgroundColor: Colors.grey,
       appBar: AppBar(
         backgroundColor: Colors.black,
@@ -73,9 +75,13 @@ class _RegisterState extends State<Register> {
                   ),
                   onPressed: () async {
                     if (_formKey.currentState.validate()) {
+                      setState(() => loading = true);
                       dynamic result = await _auth.registerWithEmailAndPassword(email, password);
                       if (result == null)
-                        setState(() => error = "Please supply a valid email");
+                        setState(() {
+                          loading = false;
+                          error = "Please supply a valid email";
+                        });
                     }
                   },
                 ),

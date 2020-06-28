@@ -3,7 +3,7 @@ import 'package:streetracegather/authenticate/authenticate.dart';
 import 'package:streetracegather/helpers/competitorInfo.dart';
 import 'package:streetracegather/pages/enter_race.dart';
 import 'package:streetracegather/pages/home.dart';
-import 'package:streetracegather/pages/loading.dart';
+import 'package:streetracegather/shared/loading.dart';
 import 'package:streetracegather/pages/start_race.dart';
 import 'package:streetracegather/pages/wrapper.dart';
 import 'package:provider/provider.dart';
