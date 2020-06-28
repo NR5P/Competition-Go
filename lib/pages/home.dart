@@ -3,6 +3,8 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:streetracegather/helpers/competition.dart';
 import 'package:streetracegather/helpers/competitorInfo.dart';
+import 'package:streetracegather/services/database.dart';
+import 'package:provider/provider.dart';
 import 'dart:async';
 
 import 'package:streetracegather/services/auth.dart';

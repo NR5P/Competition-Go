@@ -37,7 +37,7 @@ class _SignInState extends State<SignIn> {
               },
               icon: Icon(Icons.person),
               label: Text(
-                  "Sign In",
+                  "Register",
                   style: TextStyle(color: Colors.grey),
               )
           )

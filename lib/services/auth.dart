@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:streetracegather/helpers/competitorInfo.dart';
+import 'package:streetracegather/services/database.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -44,6 +45,10 @@ class AuthService {
     try {
       AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       FirebaseUser user = result.user;
+
+      // create new doc for user with uid
+      await DatabaseService(user.uid).updateUserData("0");
+
       return _userFromFirebaseUser(user);
     } catch(e) {
       print(e.toString());
