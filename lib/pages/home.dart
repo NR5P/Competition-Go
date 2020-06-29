@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
@@ -20,7 +21,7 @@ class _HomeState extends State<Home> {
   final AuthService _auth = AuthService();
 
   //TODO: test code
-  DateTime startingTime = DateTime.parse("2020-06-23 21:47:00Z");  // 8:18pm
+  DateTime startingTime = DateTime.parse("2020-06-29 21:47:00Z");  // 8:18pm
   //TODO: end test code
 
   Competition competition;
@@ -35,31 +36,34 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-            "Competition Go",
+    return StreamProvider<QuerySnapshot>.value(
+      value: DatabaseService().competitionUsers,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+              "Competition Go",
+          ),
+          backgroundColor: Colors.black,
+          actions: [
+            FlatButton.icon(
+                onPressed: () async {
+                  await _auth.signOut();
+                },
+                icon: Icon(
+                  Icons.person,
+                  color: Colors.grey,
+                ),
+                label: Text(
+                  "logout",
+                  style: TextStyle(color: Colors.grey),
+                )
+            )
+          ],
         ),
-        backgroundColor: Colors.black,
-        actions: [
-          FlatButton.icon(
-              onPressed: () async {
-                await _auth.signOut();
-              },
-              icon: Icon(
-                Icons.person,
-                color: Colors.grey,
-              ),
-              label: Text(
-                "logout",
-                style: TextStyle(color: Colors.grey),
-              )
-          )
-        ],
+        backgroundColor: backgroundColor,
+        body: buildTimerDisplay(),
+        floatingActionButton: buildSpeedDial(),
       ),
-      backgroundColor: backgroundColor,
-      body: buildTimerDisplay(),
-      floatingActionButton: buildSpeedDial(),
     );
   }
 

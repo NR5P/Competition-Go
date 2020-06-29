@@ -20,7 +20,6 @@ class Competition {
     displayTime += hours < 10 ? "0" + hours.toString() + ":" : hours.toString() + ":";
     displayTime += minutes < 10 ? "0" + minutes.toString() + ":" : minutes.toString() + ":";
     displayTime += seconds < 10 ? "0" + seconds.toString() : seconds.toString();
-    print(displayTime);
     return displayTime;
   }
 
